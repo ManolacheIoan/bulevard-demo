@@ -33,9 +33,7 @@ export default function Home() {
 
       <main id="continut">
         {/* HERO */}
-        <section className="relative overflow-hidden">
-          <div aria-hidden="true" className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-flame/30 blur-3xl" />
-          <div aria-hidden="true" className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-amber/20 blur-3xl" />
+        <section className="hero relative overflow-hidden">
           <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-8 md:grid-cols-[1.2fr_1fr] md:pt-16">
             <div>
               <p className="inline-block rounded-full bg-coal px-4 py-1.5 text-sm font-semibold text-amber">
@@ -55,7 +53,7 @@ export default function Home() {
               </a>
             </div>
             <div className="photo relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-[2.5rem] shadow-2xl shadow-flame/30" role="img" aria-label="Fotografie produse [de completat]">
-              <span className="text-[9rem] drop-shadow-2xl" aria-hidden="true">🍔</span>
+              <span className="text-[9rem]" aria-hidden="true">🍔</span>
               <span className="absolute bottom-4 left-4 rounded bg-ink/80 px-2 py-1 text-xs" aria-hidden="true">Foto [de completat]</span>
             </div>
           </div>
@@ -164,7 +162,7 @@ export default function Home() {
       </footer>
 
       {/* Buton fix pe mobil */}
-      <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-ember bg-ink/95 p-3 backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-ember bg-ink/95 p-3 md:hidden">
         <a href={`tel:${site.phoneE164}`} className="rounded-xl bg-flame py-3 text-center font-extrabold text-white">📞 Sună</a>
         <a href="#meniu" className="rounded-xl bg-amber py-3 text-center font-extrabold text-ink">🛒 Comandă</a>
       </div>

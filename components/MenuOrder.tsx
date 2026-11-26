@@ -54,7 +54,7 @@ export default function MenuOrder() {
         </p>
       </div>
 
-      <div className="sticky top-0 z-20 -mx-4 mt-6 bg-ink/95 px-4 py-3 backdrop-blur">
+      <div className="sticky top-0 z-20 -mx-4 mt-6 bg-ink/95 px-4 py-3">
         <label htmlFor="cauta" className="sr-only">Caută în meniu</label>
         <input
           id="cauta"
@@ -93,7 +93,7 @@ export default function MenuOrder() {
             return (
               <li key={m.id} className="flex flex-col overflow-hidden rounded-2xl bg-coal shadow-lg shadow-black/30">
                 <div className="photo relative flex aspect-[16/10] items-center justify-center" role="img" aria-label={`Fotografie ${TBD}`}>
-                  <span className="text-7xl drop-shadow-lg" aria-hidden="true">{c.emoji}</span>
+                  <span className="text-7xl" aria-hidden="true">{c.emoji}</span>
                   <span className="absolute bottom-2 left-2 rounded bg-ink/80 px-2 py-0.5 text-xs" aria-hidden="true">Foto {TBD}</span>
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-5">

@@ -24,3 +24,4 @@ html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body { background: var(--color-ink); color: var(--color-cream); }
 :focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; border-radius: 6px; }
 .photo { background: radial-gradient(circle at 30% 25%, #ffb347 0%, #e8541f 45%, #8e1b12 100%); }
+.hero { background: radial-gradient(40rem 30rem at 100% 0%, rgb(215 38 30 / .28), transparent 70%), radial-gradient(36rem 28rem at 0% 100%, rgb(255 154 46 / .16), transparent 70%); }
