@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
   title: `${site.name} — Fast food în ${site.city}`,
   description,
-  alternates: { canonical: "./" },
   openGraph: { title: site.name, description, locale: "ro_RO", type: "website" },
   // Demo: nu indexăm până nu aprobă proprietarul. La lansare, pune site.demo.enabled = false.
   robots: site.demo.enabled ? { index: false, follow: false } : { index: true, follow: true },

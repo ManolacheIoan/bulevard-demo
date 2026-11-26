@@ -28,7 +28,9 @@ export const site = {
   facebook: {
     label: "Fast Food Bulevard",
     followers: "3.000+",
-    url: "https://www.facebook.com/search/top?q=Fast%20Food%20Bulevard%20Tecuci", // [de completat] link direct către pagină
+    /** [de completat] link direct către pagina de Facebook (ex. https://www.facebook.com/...). Gol = butonul nu apare. */
+    url: "",
+    followersText: "peste 3.000 de oameni",
   },
   mapEmbed:
     "https://maps.google.com/maps?q=Bd.+Victoriei+8,+Tecuci&z=16&output=embed",

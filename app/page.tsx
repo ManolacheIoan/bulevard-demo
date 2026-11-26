@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import MenuOrder, { WaIcon } from "@/components/MenuOrder";
 import { site, formatPrice, TBD } from "@/content/site";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export const metadata: Metadata = { alternates: { canonical: "./" } };
 
 const btnPrimary =
   "inline-flex items-center justify-center gap-2 rounded-2xl bg-amber px-6 py-4 text-base font-extrabold text-white shadow-lg shadow-amber/30 transition hover:-translate-y-0.5 hover:bg-amber-dark sm:text-lg";
@@ -41,7 +44,7 @@ export default function Home() {
           </a>
           <nav aria-label="Principal" className="hidden items-center gap-7 text-sm font-medium text-white/90 md:flex [&_a:hover]:text-peach">
             <a href="#meniu">Meniu</a>
-            <a href="#oferta">Oferta zilei</a>
+            {offer.enabled && <a href="#oferta">Oferta zilei</a>}
             <a href="#livrare">Livrare</a>
             <a href="#local">Localul</a>
             <a href="#contact">Contact</a>
@@ -263,11 +266,11 @@ export default function Home() {
             <div>
               <p className="eyebrow">Recenzii</p>
               <h2 id="recenzii-titlu" className="mt-1 text-xl font-extrabold md:text-2xl">Peste 720 de clienți și-au spus părerea</h2>
-              <p className="mt-1 text-sm text-cream/70">Citește-le direct pe Google sau urmărește-ne pe Facebook, alături de {site.facebook.followers} de oameni.</p>
+              <p className="mt-1 text-sm text-cream/70">Citește-le direct pe Google. Pe Facebook ne urmăresc deja {site.facebook.followersText}.</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row md:flex-col">
               <a href={site.google.url} target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-cream px-5 py-3 text-center text-sm font-bold text-white hover:bg-flame">Vezi recenziile pe Google</a>
-              <a href={site.facebook.url} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-ember px-5 py-3 text-center text-sm font-bold hover:border-cream/40">Facebook</a>
+              {site.facebook.url && <a href={site.facebook.url} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-ember px-5 py-3 text-center text-sm font-bold hover:border-cream/40">Facebook</a>}
             </div>
           </div>
         </section>
