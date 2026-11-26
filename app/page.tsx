@@ -35,7 +35,7 @@ export default function Home() {
 
       <header className="mosaic sticky top-0 z-30 text-white shadow-lg shadow-flame/20">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-          <a href="#" className="flex flex-col leading-none" aria-label="Fast Food Bulevard — început">
+          <a href="#" className="flex flex-col leading-none">
             <span className="sign text-[1.35rem] font-bold text-peach">BULEVARD</span>
             <span className="mt-1 rounded-[3px] bg-amber px-1.5 py-[3px] text-[0.58rem] font-semibold tracking-[0.22em] text-white">FOOD SHOP &amp; BISTRO</span>
           </a>
@@ -226,7 +226,7 @@ export default function Home() {
                 ["Timp estimat", delivery.time],
               ].map(([k, v]) => (
                 <li key={k} className="rounded-xl bg-ink px-4 py-3">
-                  <span className="block text-[0.7rem] font-bold uppercase tracking-[0.14em] text-cream/60">{k}</span>
+                  <span className="block text-[0.7rem] font-bold uppercase tracking-[0.14em] text-cream/75">{k}</span>
                   <span className="text-sm font-medium">{v}</span>
                 </li>
               ))}
