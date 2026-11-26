@@ -1,12 +1,15 @@
-const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+import { ArrowLeft } from "lucide-react";
+import Logo from "@/components/Logo";
+import { base } from "@/lib/paths";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-      <span className="sign text-3xl font-bold text-amber">BULEVARD</span>
-      <h1 className="mt-4 text-3xl font-extrabold">Pagina nu există</h1>
-      <p className="mt-2 text-cream/75">Dar meniul e la un click distanță.</p>
-      <a href={`${base}/`} className="mt-6 rounded-2xl bg-amber px-6 py-3.5 font-extrabold text-white hover:bg-amber-dark">Înapoi la meniu</a>
+    <main className="mosaic flex min-h-dvh flex-col items-center justify-center px-4 text-center text-white">
+      <Logo />
+      <p className="mt-10 font-display text-7xl font-bold text-peach">404</p>
+      <h1 className="mt-2 font-display text-2xl font-bold">Pagina nu există</h1>
+      <p className="mt-2 text-white/70">Dar meniul e la un click distanță.</p>
+      <a href={`${base}/`} className="btn btn-accent mt-8"><ArrowLeft aria-hidden="true" className="h-4 w-4" /> Înapoi la meniu</a>
     </main>
   );
 }

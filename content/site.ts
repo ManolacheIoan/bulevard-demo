@@ -13,28 +13,32 @@ export const site = {
     street: "Bd. Victoriei nr. 8",
     locality: "Tecuci",
     region: "Galați",
-    postalCode: "", // [de completat]
     country: "RO",
   },
   phoneDisplay: "0729 883 195",
   phoneE164: "+40729883195",
   /** Număr WhatsApp pentru comenzi, fără „+”. [de completat] — confirmă că 0729 883 195 are WhatsApp. */
   whatsapp: "40729883195",
+  /**
+   * Endpoint Formspree pentru comenzile trimise din site (ex. "https://formspree.io/f/abcdwxyz").
+   * Gol = formularul afișează un mesaj clar și propune WhatsApp / telefon. [de completat]
+   */
+  formspreeEndpoint: "",
   google: {
     rating: "4,1",
+    ratingValue: 4.1,
+    reviews: "720+",
     reviewsLabel: "peste 720 de recenzii",
     url: "https://www.google.com/maps/search/?api=1&query=Fast+Food+Bulevard+Bd.+Victoriei+8+Tecuci",
   },
   facebook: {
-    label: "Fast Food Bulevard",
     followers: "3.000+",
-    /** [de completat] link direct către pagina de Facebook (ex. https://www.facebook.com/...). Gol = butonul nu apare. */
-    url: "",
     followersText: "peste 3.000 de oameni",
+    /** [de completat] link direct către pagina de Facebook. Gol = butonul nu apare. */
+    url: "",
   },
-  mapEmbed:
-    "https://maps.google.com/maps?q=Bd.+Victoriei+8,+Tecuci&z=16&output=embed",
-  siteUrl: "https://manolacheioan.github.io/bulevard-demo/",
+  mapEmbed: "https://maps.google.com/maps?q=Bd.+Victoriei+8,+Tecuci&z=16&output=embed",
+  siteUrl: "https://manolacheioan.github.io/bulevard-demo",
 
   /** Bandă de demo — pune `false` la lansare. */
   demo: {
@@ -42,20 +46,29 @@ export const site = {
     text: "Demo realizat de Manotek — propunere pentru Fast Food Bulevard",
   },
 
+  seo: {
+    title: "Fast Food Bulevard Tecuci — shaorma, burgeri, pizza | Comenzi 0729 883 195",
+    description:
+      "Fast food pe Bd. Victoriei nr. 8, în centrul Tecuciului. Shaorma, burgeri, pizza și cartofi, la pachet sau cu livrare. Comandă la 0729 883 195 sau pe WhatsApp.",
+  },
+
   hero: {
-    title: "Fast food pe Bulevardul Victoriei",
-    subtitle:
-      "Shaorma, burgeri, pizza și cartofi, pregătite pe loc în centrul Tecuciului. Alege din meniu și comandă la telefon sau pe WhatsApp.",
+    eyebrow: "Bd. Victoriei nr. 8 · Tecuci",
+    titleA: "Fast food pe",
+    titleB: "Bulevardul Victoriei",
+    subtitle: "Shaorma, burgeri, pizza și cartofi, făcute pe loc, în centrul Tecuciului. Alegi din meniu și comanzi în câteva secunde.",
   },
 
   offer: {
     enabled: true,
     label: "Oferta zilei",
-    title: `Meniu shaorma + cartofi + băutură ${TBD}`,
-    description: `Descrierea ofertei ${TBD}. Se schimbă din content/site.ts.`,
+    title: "Shaorma + cartofi + băutură",
+    description: "Meniul complet, la un preț bun. Conținutul ofertei se schimbă zilnic.",
+    /** true = ofertă-exemplu, afișată cu eticheta „[de completat]”. */
+    example: true,
     price: null as number | null,
     oldPrice: null as number | null,
-    emoji: "🌯",
+    validity: TBD,
   },
 
   delivery: {
@@ -63,7 +76,7 @@ export const site = {
     minOrder: TBD,
     fee: TBD,
     time: TBD,
-    payment: "Plata se face la livrare sau în local. Nu există plată online.",
+    payment: "Plătești la livrare sau în local. Fără plată online.",
   },
 
   hours: [
@@ -75,13 +88,14 @@ export const site = {
 
 export type CategoryId = "shaorma" | "burgeri" | "pizza" | "cartofi" | "bauturi" | "sosuri";
 
-export const categories: { id: CategoryId; label: string; emoji: string; tone: string }[] = [
-  { id: "shaorma", label: "Shaorma", emoji: "🌯", tone: "#c8202f" },
-  { id: "burgeri", label: "Burgeri", emoji: "🍔", tone: "#e8772e" },
-  { id: "pizza", label: "Pizza", emoji: "🍕", tone: "#1e9a4a" },
-  { id: "cartofi", label: "Cartofi", emoji: "🍟", tone: "#f2b01e" },
-  { id: "bauturi", label: "Băuturi", emoji: "🥤", tone: "#2f4a6b" },
-  { id: "sosuri", label: "Sosuri", emoji: "🥫", tone: "#b4461a" },
+/** `image` = numele fișierului din public/images (fără -640/-1280). `null` = placeholder premium. */
+export const categories: { id: CategoryId; label: string; image: string | null }[] = [
+  { id: "shaorma", label: "Shaorma", image: "shaorma" },
+  { id: "burgeri", label: "Burgeri", image: "burgeri" },
+  { id: "pizza", label: "Pizza", image: "pizza" },
+  { id: "cartofi", label: "Cartofi", image: "cartofi" },
+  { id: "bauturi", label: "Băuturi", image: null },
+  { id: "sosuri", label: "Sosuri", image: "sosuri" },
 ];
 
 export type MenuItem = {
@@ -91,7 +105,7 @@ export type MenuItem = {
   description: string;
   /** Preț în lei; `null` = „[de completat]”. */
   price: number | null;
-  /** true = produs-exemplu, afișat cu eticheta „[de completat]”. Pune false/șterge când e produs real. */
+  /** true = produs-exemplu, afișat cu eticheta „[de completat]”. Șterge când e produs real. */
   example?: boolean;
 };
 
@@ -106,32 +120,33 @@ export const menu: MenuItem[] = [
   { id: "pz-marg", category: "pizza", name: "Pizza Margherita", description: `Ingrediente și mărime ${TBD}`, price: null, example: true },
   { id: "pz-quattro", category: "pizza", name: "Pizza Quattro Stagioni", description: `Ingrediente și mărime ${TBD}`, price: null, example: true },
   { id: "pz-casei", category: "pizza", name: "Pizza casei", description: `Ingrediente și mărime ${TBD}`, price: null, example: true },
-  { id: "cf-mici", category: "cartofi", name: "Cartofi prăjiți porție mică", description: `Gramaj ${TBD}`, price: null, example: true },
-  { id: "cf-mari", category: "cartofi", name: "Cartofi prăjiți porție mare", description: `Gramaj ${TBD}`, price: null, example: true },
+  { id: "cf-mici", category: "cartofi", name: "Cartofi prăjiți, porție mică", description: `Gramaj ${TBD}`, price: null, example: true },
+  { id: "cf-mari", category: "cartofi", name: "Cartofi prăjiți, porție mare", description: `Gramaj ${TBD}`, price: null, example: true },
   { id: "cf-wedges", category: "cartofi", name: "Cartofi wedges", description: `Gramaj ${TBD}`, price: null, example: true },
   { id: "bt-cola", category: "bauturi", name: "Băutură răcoritoare 0,5 l", description: `Sortimente ${TBD}`, price: null, example: true },
-  { id: "bt-apa", category: "bauturi", name: "Apă plată / minerală", description: `Mărime ${TBD}`, price: null, example: true },
+  { id: "bt-apa", category: "bauturi", name: "Apă plată sau minerală", description: `Mărime ${TBD}`, price: null, example: true },
   { id: "ss-usturoi", category: "sosuri", name: "Sos de usturoi", description: `Gramaj ${TBD}`, price: null, example: true },
-  { id: "ss-ketchup", category: "sosuri", name: "Ketchup dulce / picant", description: `Gramaj ${TBD}`, price: null, example: true },
+  { id: "ss-ketchup", category: "sosuri", name: "Ketchup dulce sau picant", description: `Gramaj ${TBD}`, price: null, example: true },
 ];
 
 export const formatPrice = (p: number | null) => (p == null ? TBD : `${p.toLocaleString("ro-RO")} lei`);
 
 /** Pagina /propunere — pentru proprietar. Prețurile pachetelor le stabilește Manotek. */
 export const proposal = {
+  deliveryTime: TBD,
   packages: [
     {
       name: "Prezentare",
       price: null as number | null,
       tagline: "Site rapid, pe telefon, cu meniu și contact.",
-      features: ["Site de prezentare pe domeniul vostru", "Meniu pe categorii, editabil", "Buton „Sună” și hartă", "SEO local de bază (Google)"],
+      features: ["Site pe domeniul vostru", "Meniu pe categorii, editabil", "Buton „Sună” și hartă", "SEO local de bază"],
       recommended: false,
     },
     {
       name: "Comenzi",
       price: null as number | null,
       tagline: "Tot ce vedeți în demo: clienții comandă singuri.",
-      features: ["Tot din Prezentare", "Coș de comandă cu trimitere pe WhatsApp", "Oferta zilei, schimbată oricând", "Pozele voastre reale, prelucrate", "Configurare Google Business + Facebook", "Suport 3 luni"],
+      features: ["Tot din Prezentare", "Coș de comandă: formular + WhatsApp", "Oferta zilei, schimbată oricând", "Pozele voastre, prelucrate profesional", "Configurare Google Business", "Suport 3 luni"],
       recommended: true,
     },
     {
