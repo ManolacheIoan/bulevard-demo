@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   turbopack: { root: __dirname },
   ...(basePath ? { basePath } : {}),
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;

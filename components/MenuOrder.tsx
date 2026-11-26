@@ -72,7 +72,7 @@ export default function MenuOrder() {
               aria-pressed={cat === c.id}
               onClick={() => setCat(c.id)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                cat === c.id ? "bg-amber text-ink" : "bg-coal text-cream hover:bg-ember"
+                cat === c.id ? "bg-flame text-white" : "border border-ember bg-coal text-cream hover:bg-ember"
               }`}
             >
               <span aria-hidden="true">{c.emoji}</span> {c.label}
@@ -91,10 +91,10 @@ export default function MenuOrder() {
             const c = categories.find((x) => x.id === m.category)!;
             const qty = cart[m.id] ?? 0;
             return (
-              <li key={m.id} className="flex flex-col overflow-hidden rounded-2xl bg-coal shadow-lg shadow-black/30">
+              <li key={m.id} className="flex flex-col overflow-hidden rounded-2xl border border-ember bg-coal shadow-md shadow-flame/5">
                 <div className="photo relative flex aspect-[16/10] items-center justify-center" role="img" aria-label={`Fotografie ${TBD}`}>
                   <span className="text-7xl" aria-hidden="true">{c.emoji}</span>
-                  <span className="absolute bottom-2 left-2 rounded bg-ink/80 px-2 py-0.5 text-xs" aria-hidden="true">Foto {TBD}</span>
+                  <span className="absolute bottom-2 left-2 rounded bg-coal/90 px-2 py-0.5 text-xs" aria-hidden="true">Foto {TBD}</span>
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-5">
                   <p className="text-xs font-semibold uppercase tracking-wider text-amber">{c.label}</p>
@@ -106,7 +106,7 @@ export default function MenuOrder() {
                       <button
                         type="button"
                         onClick={() => change(m.id, 1)}
-                        className="rounded-full bg-flame px-5 py-2.5 font-bold text-white hover:bg-flame-dark"
+                        className="rounded-full bg-amber px-5 py-2.5 font-bold text-white hover:bg-[#963a15]"
                         aria-label={`Adaugă în coș: ${m.name}`}
                       >
                         Adaugă
@@ -126,14 +126,14 @@ export default function MenuOrder() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="fixed bottom-20 right-4 z-40 flex items-center gap-2 rounded-full bg-amber px-5 py-3 font-extrabold text-ink shadow-xl md:bottom-6"
+          className="fixed bottom-20 right-4 z-40 flex items-center gap-2 rounded-full bg-amber px-5 py-3 font-extrabold text-white shadow-xl md:bottom-6"
         >
-          🛒 Coșul meu <span className="rounded-full bg-ink px-2 text-sm text-amber">{count}</span>
+          🛒 Coșul meu <span className="rounded-full bg-white px-2 text-sm text-amber">{count}</span>
         </button>
       )}
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 md:items-center" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-cream/60 md:items-center" onClick={() => setOpen(false)}>
           <div
             role="dialog"
             aria-modal="true"

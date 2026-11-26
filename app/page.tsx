@@ -1,8 +1,10 @@
 import MenuOrder from "@/components/MenuOrder";
 import { site, formatPrice } from "@/content/site";
 
-const btnPrimary = "inline-flex items-center justify-center gap-2 rounded-2xl bg-flame px-7 py-4 text-lg font-extrabold text-white shadow-lg shadow-flame/30 hover:bg-flame-dark";
-const btnSecondary = "inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-amber px-7 py-4 text-lg font-extrabold text-amber hover:bg-amber hover:text-ink";
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const btnPrimary = "inline-flex items-center justify-center gap-2 rounded-2xl bg-amber px-7 py-4 text-lg font-extrabold text-white shadow-lg shadow-amber/25 hover:bg-[#963a15]";
+const btnSecondary = "inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-flame bg-coal px-7 py-4 text-lg font-extrabold text-flame hover:bg-flame hover:text-white";
 
 export default function Home() {
   const { offer, delivery } = site;
@@ -16,19 +18,23 @@ export default function Home() {
         <div className="bg-amber px-4 py-2 text-center text-sm font-semibold text-ink">{site.demo.text}</div>
       )}
 
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <a href="#" className="text-xl font-extrabold tracking-tight">
-          <span aria-hidden="true">🍔 </span>Fast Food <span className="text-amber">Bulevard</span>
+      <header className="mosaic text-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="#" className="flex flex-col leading-none" aria-label="Fast Food Bulevard — început">
+          <span className="sign text-2xl font-bold text-[#ffb37a]">BULEVARD</span>
+          <span className="mt-1 rounded-sm bg-amber px-1.5 py-0.5 text-[0.65rem] font-semibold tracking-[0.2em] text-white">FOOD SHOP &amp; BISTRO</span>
         </a>
-        <nav aria-label="Principal" className="hidden gap-6 text-sm font-semibold md:flex">
-          <a href="#meniu" className="hover:text-amber">Meniu</a>
-          <a href="#oferta" className="hover:text-amber">Oferta zilei</a>
-          <a href="#livrare" className="hover:text-amber">Livrare</a>
-          <a href="#contact" className="hover:text-amber">Contact</a>
+        <nav aria-label="Principal" className="hidden gap-6 text-sm font-semibold md:flex [&_a:hover]:text-[#ffb37a]">
+          <a href="#meniu" >Meniu</a>
+          <a href="#oferta" >Oferta zilei</a>
+          <a href="#livrare" >Livrare</a>
+          <a href="#contact" >Contact</a>
         </nav>
-        <a href={`tel:${site.phoneE164}`} className="hidden rounded-full bg-flame px-4 py-2 text-sm font-bold text-white hover:bg-flame-dark md:inline-block">
+        <a href={`tel:${site.phoneE164}`} className="hidden rounded-full bg-amber px-4 py-2 text-sm font-bold text-white hover:bg-[#963a15] md:inline-block">
           {site.phoneDisplay}
         </a>
+        </div>
+        <div className="chairs" aria-hidden="true" />
       </header>
 
       <main id="continut">
@@ -40,7 +46,7 @@ export default function Home() {
                 {site.address.street}, {site.city}
               </p>
               <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] sm:text-6xl">
-                Fast food pe <span className="text-amber">Bulevardul</span> <span className="text-flame-light">Victoriei</span>
+                Fast food pe <span className="text-amber">Bulevardul</span> <span className="text-flame">Victoriei</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg text-cream/85">{site.hero.subtitle}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -52,9 +58,12 @@ export default function Home() {
                 <strong className="text-cream">{site.google.rating}</strong> pe Google, din {site.google.reviewsLabel}
               </a>
             </div>
-            <div className="photo relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-[2.5rem] shadow-2xl shadow-flame/30" role="img" aria-label="Fotografie produse [de completat]">
-              <span className="text-[9rem]" aria-hidden="true">🍔</span>
-              <span className="absolute bottom-4 left-4 rounded bg-ink/80 px-2 py-1 text-xs" aria-hidden="true">Foto [de completat]</span>
+            <div className="relative mx-auto w-full max-w-md">
+              <img src={`${base}/img/fatada.jpg`} alt="Fațada localului Bulevard Food Shop & Bistro de pe Bd. Victoriei, Tecuci" width={449} height={445} fetchPriority="high" className="aspect-square w-full rounded-[2rem] object-cover shadow-2xl shadow-flame/25 ring-8 ring-coal" />
+              <div className="absolute -bottom-5 -left-4 rounded-2xl bg-coal px-4 py-3 shadow-xl">
+                <p className="text-xs font-semibold uppercase tracking-wider text-flame">Food shop · Bistro · Cofetărie</p>
+                <p className="font-extrabold">Pe Bd. Victoriei nr. 8</p>
+              </div>
             </div>
           </div>
         </section>
@@ -127,6 +136,18 @@ export default function Home() {
           </div>
         </section>
 
+        {/* LOCALUL */}
+        <section aria-labelledby="local-titlu" className="mx-auto max-w-6xl px-4 py-16">
+          <p className="font-semibold uppercase tracking-widest text-amber">Localul</p>
+          <h2 id="local-titlu" className="text-3xl font-extrabold md:text-4xl">Stai la masă sau iei la pachet</h2>
+          <p className="mt-3 max-w-2xl text-cream/85">Sală luminoasă cu scaune colorate, vitrină cu preparate și cofetărie, la parterul clădirii de pe bulevard.</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-[1.4fr_1fr]">
+            <img src={`${base}/img/interior.jpg`} alt="Interiorul localului: mese, vitrina cu preparate și raftul de produse" width={516} height={387} loading="lazy" className="h-full w-full rounded-3xl object-cover" />
+            <img src={`${base}/img/sala.jpg`} alt="Sala de mese cu scaune roșii, verzi, galbene și portocalii" width={535} height={958} loading="lazy" className="aspect-[4/5] w-full rounded-3xl object-cover md:aspect-auto md:h-full" />
+          </div>
+          <div className="chairs mt-8 rounded-full" aria-hidden="true" />
+        </section>
+
         {/* CONTACT */}
         <section id="contact" aria-labelledby="contact-titlu" className="bg-coal py-16">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-2">
@@ -156,7 +177,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="px-4 pb-28 pt-10 text-center text-sm text-cream/75 md:pb-10">
+      <footer className="mosaic text-white/90 [&_*]:text-white/90 px-4 pb-28 pt-10 text-center text-sm md:pb-10">
         <p>© {new Date().getFullYear()} {site.name} · {site.address.street}, {site.city}</p>
         {site.demo.enabled && <p className="mt-1">{site.demo.text}</p>}
       </footer>
@@ -164,7 +185,7 @@ export default function Home() {
       {/* Buton fix pe mobil */}
       <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-ember bg-ink/95 p-3 md:hidden">
         <a href={`tel:${site.phoneE164}`} className="rounded-xl bg-flame py-3 text-center font-extrabold text-white">📞 Sună</a>
-        <a href="#meniu" className="rounded-xl bg-amber py-3 text-center font-extrabold text-ink">🛒 Comandă</a>
+        <a href="#meniu" className="rounded-xl bg-amber py-3 text-center font-extrabold text-white">🛒 Comandă</a>
       </div>
     </>
   );

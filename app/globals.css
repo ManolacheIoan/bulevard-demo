@@ -9,19 +9,26 @@
 
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #140d0b;
-  --color-coal: #21160f;
-  --color-ember: #2e1f16;
-  --color-flame: #d7261e;
-  --color-flame-dark: #b51d16;
-  --color-flame-light: #ff5a4a;
-  --color-amber: #ff9a2e;
-  --color-cream: #fff4e6;
+  /* Paletă din local: podea crem, fațadă albastru-ardezie, firmă teracotă, scaune colorate */
+  --color-ink: #faf6ef;        /* fundal (marmură crem) */
+  --color-coal: #ffffff;       /* carduri */
+  --color-ember: #e7ddcf;      /* borduri / suprafețe secundare */
+  --color-cream: #1e2a38;      /* text principal */
+  --color-flame: #2f4a6b;      /* albastru fațadă */
+  --color-flame-dark: #233a56;
+  --color-flame-light: #2f4a6b;
+  --color-amber: #b4461a;      /* teracota firmei */
+  --color-chair-red: #c8202f;
+  --color-chair-green: #1e9a4a;
+  --color-chair-yellow: #f2b01e;
+  --color-chair-orange: #e8772e;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 body { background: var(--color-ink); color: var(--color-cream); }
 :focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; border-radius: 6px; }
-.photo { background: radial-gradient(circle at 30% 25%, #ffb347 0%, #e8541f 45%, #8e1b12 100%); }
-.hero { background: radial-gradient(40rem 30rem at 100% 0%, rgb(215 38 30 / .28), transparent 70%), radial-gradient(36rem 28rem at 0% 100%, rgb(255 154 46 / .16), transparent 70%); }
+.photo { background: linear-gradient(135deg, #f6e9d7, #ecd3b6); }
+.mosaic { background-color: #2f4a6b; background-image: linear-gradient(rgb(255 255 255 / .06) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .06) 1px, transparent 1px); background-size: 14px 14px; }
+.chairs { background: linear-gradient(90deg, var(--color-chair-red) 0 25%, var(--color-chair-green) 0 50%, var(--color-chair-yellow) 0 75%, var(--color-chair-orange) 0); height: 6px; }
+.sign { font-family: Georgia, "Times New Roman", serif; letter-spacing: .08em; }
