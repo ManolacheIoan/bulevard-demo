@@ -58,7 +58,7 @@ export default function Header({ home = true }: { home?: boolean }) {
       </div>
       <div className="chairs" aria-hidden="true" />
       {open && (
-        <nav id="meniu-mobil" aria-label="Meniu mobil" className="border-t border-white/10 bg-night px-4 pb-5 pt-2 lg:hidden">
+        <nav id="meniu-mobil" aria-label="Meniu mobil" className="absolute inset-x-0 top-full border-t border-white/10 bg-night px-4 pb-5 pt-2 shadow-2xl shadow-black/40 lg:hidden">
           <ul className="divide-y divide-white/10">
             {navLinks.map((l) => (
               <li key={l.id}>
