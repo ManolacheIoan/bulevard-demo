@@ -2,7 +2,7 @@
 
 Toate fotografiile sunt de pe **Unsplash**, gratuite pentru uz comercial, sub [Unsplash License](https://unsplash.com/license) (nu necesită atribuire; o oferim din respect pentru autori).
 Imaginile sunt **ilustrative** — se înlocuiesc cu poze reale ale produselor Fast Food Bulevard.
-Au fost decupate, redimensionate și convertite în WebP (640 px și 1280 px) în `public/images/`.
+Au fost decupate, redimensionate și convertite în WebP (640, 960 și 1280 px) în `public/images/`.
 
 | Fișier | Folosită pentru | Autor | Sursă |
 |---|---|---|---|

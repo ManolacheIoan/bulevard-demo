@@ -30,7 +30,7 @@ export default function Header({ home = true }: { home?: boolean }) {
   return (
     <header className={`sticky top-0 z-40 text-white transition-[background-color,box-shadow] duration-300 ${scrolled ? "bg-night/95 shadow-lg shadow-black/20 backdrop-blur-md" : "bg-night"}`}>
       <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-[height] duration-300 sm:px-6 ${scrolled ? "h-14" : "h-[4.5rem]"}`}>
-        <a href={home ? "#top" : `${base}/`} aria-label={`${site.name} — pagina principală`} className="rounded-md">
+        <a href={home ? "#top" : `${base}/`} className="rounded-md">
           <Logo compact={scrolled} />
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
