@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/content/site";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+
+const poppins = Poppins({ subsets: ["latin", "latin-ext"], weight: ["400", "500", "600", "700", "800"], display: "swap", variable: "--font-poppins" });
 
 const description = `${site.name} — fast food pe ${site.address.street}, ${site.city}. Shaorma, burgeri, pizza, cartofi. Comenzi la ${site.phoneDisplay}.`;
 
@@ -34,7 +37,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro">
+    <html lang="ro" className={poppins.variable}>
       <body className="font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         {children}
