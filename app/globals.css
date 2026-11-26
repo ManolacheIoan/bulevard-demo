@@ -18,13 +18,15 @@
   --color-flame-dark: #233a56;
   --color-flame-light: #2f4a6b;
   --color-amber: #b4461a;      /* teracota firmei */
+  --color-amber-dark: #963a15;
+  --color-peach: #ffb37a;
   --color-chair-red: #c8202f;
   --color-chair-green: #1e9a4a;
   --color-chair-yellow: #f2b01e;
   --color-chair-orange: #e8772e;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 body { background: var(--color-ink); color: var(--color-cream); }
 :focus-visible { outline: 3px solid var(--color-amber); outline-offset: 2px; border-radius: 6px; }
@@ -32,3 +34,19 @@ body { background: var(--color-ink); color: var(--color-cream); }
 .mosaic { background-color: #2f4a6b; background-image: linear-gradient(rgb(255 255 255 / .06) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .06) 1px, transparent 1px); background-size: 14px 14px; }
 .chairs { background: linear-gradient(90deg, var(--color-chair-red) 0 25%, var(--color-chair-green) 0 50%, var(--color-chair-yellow) 0 75%, var(--color-chair-orange) 0); height: 6px; }
 .sign { font-family: Georgia, "Times New Roman", serif; letter-spacing: .08em; }
+
+@layer components {
+  .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-amber); }
+  .eyebrow::before { content: ""; width: 1.25rem; height: 2px; border-radius: 2px; background: currentColor; }
+  .h2 { margin-top: .35rem; font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; }
+  .card { border-radius: 1.25rem; background: #fff; border: 1px solid var(--color-ember); box-shadow: 0 1px 2px rgb(30 42 56 / .04), 0 8px 24px -12px rgb(30 42 56 / .12); transition: box-shadow .25s, transform .25s; }
+  .card:hover { box-shadow: 0 2px 4px rgb(30 42 56 / .05), 0 18px 40px -16px rgb(30 42 56 / .25); transform: translateY(-2px); }
+  .tile { background: radial-gradient(120% 90% at 30% 20%, color-mix(in oklab, var(--tone) 22%, #fff) 0%, color-mix(in oklab, var(--tone) 38%, #f6e9d7) 100%); }
+  .tbd { display: inline-block; border-radius: 999px; border: 1px dashed color-mix(in oklab, var(--color-amber) 55%, transparent); background: #fff7ef; padding: .05rem .5rem; font-size: .68rem; font-weight: 600; color: var(--color-amber-dark); white-space: nowrap; }
+  .grain { background-image: radial-gradient(rgb(30 42 56 / .05) 1px, transparent 1px); background-size: 18px 18px; }
+}
+.no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }
+@keyframes pop { 0% { transform: scale(.96); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+.pop { animation: pop .3s ease-out; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .6s ease-out both; }
